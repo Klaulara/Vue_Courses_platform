@@ -1,18 +1,23 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="d-flex flex-wrap m-5 p-5">
+    <div v-for="course in courses" :key="course.id">
+      <CoursesCard :image="course.img" :title="course.name" />
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import CoursesCard from '../components/CoursesCard.vue';
 
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
-  }
+    CoursesCard,
+  },
+  computed: {
+    courses(){
+      return this.$store.state.cursos;
+    }
+  },
 }
 </script>
