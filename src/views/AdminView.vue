@@ -1,8 +1,9 @@
 <template>
   <div>
     <h1 class="text-black mt-5">Administración</h1>
-    <button type="button" class="btn btn-primary mt-3">AGREGAR CURSO</button>
+    <button data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-primary mt-3">AGREGAR CURSO</button>
     <TableCourses :courses="courses" />
+        <ModalComponent />
     <hr />
     <div class="container border-purple rounded text-start my-3">
       <p class="text-purple m-2">
@@ -115,13 +116,16 @@
 
 <script>
 import TableCourses from "@/components/TableCourses.vue";
+import ModalComponent from "@/components/ModalComponent.vue";
 
 export default {
   name: "AdminView",
   data() {
-    return {};
+    return {
+    };
   },
-  methods: {},
+  methods: {
+  },
   computed: {
     courses() {
       return this.$store.state.cursos;
@@ -143,10 +147,11 @@ export default {
     },
     totalCursos(){
         return this.$store.getters.countCursos
-    }
+    },
   },
   components: {
     TableCourses,
+    ModalComponent,
   },
 };
 </script>

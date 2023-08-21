@@ -39,7 +39,7 @@
             </p>
           </td>
           <td>
-            <button type="button" class="btn">
+            <button @click="editCourse(course.id)" type="button" class="btn">
               <svg
                 width="30"
                 height="30"
@@ -52,7 +52,7 @@
                 />
               </svg>
             </button>
-            <button type="button" class="btn">
+            <button @click="deleteCourse(course.id)" type="button" class="btn">
               <svg
                 width="30"
                 height="30"
@@ -73,6 +73,7 @@
 </template>
 
 <script>
+
 export default {
   name: "TableCourses",
   data() {
@@ -86,7 +87,14 @@ export default {
       required: true,
     },
   },
-  methods: {},
+  methods: {
+    deleteCourse(id) {
+      this.$store.commit("DELETE", id);
+    },
+    editCourse(id) {
+      this.$router.push(`/editar/${id}`);
+    },
+  },
   computed: {},
   components: {},
 };

@@ -20,7 +20,7 @@ export default new Vuex.Store({
       },
       {
         id: 2,
-        img: "https://lineadecodigo.com/wpcontent/uploads/2014/04/css.png",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png",
         nombre: "CSS para principiantes",
         costo: 10000,
         duracion: "1 mes",
@@ -32,7 +32,7 @@ export default new Vuex.Store({
       },
       {
         id: 3,
-        img: "https://1000marcas.net/wpcontent/uploads/2020/11/JavaScript-logo.jpg",
+        img: "https://thumbs.dreamstime.com/b/logotipo-del-javascript-136765881.jpg",
         nombre: "JavaScript Básico de 0 a 100",
         costo: 20000,
         duracion: "2 meses",
@@ -57,7 +57,7 @@ export default new Vuex.Store({
       },
       {
         id: 5,
-        img: "https://logosandtypes.com/wpcontent/uploads/2020/08/vue.svg",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1184px-Vue.js_Logo_2.svg.png",
         nombre: "Vue JS de 0 a 100",
         costo: 85500,
         duracion: "5 meses",
@@ -102,9 +102,42 @@ export default new Vuex.Store({
     },
     countCursos: (state) => {
       return state.cursos.length;
+    },
+    getLastId: (state) => {
+      return state.cursos[state.cursos.length - 1].id;
+    },
+    getCursobyId: (state) => (id) => {
+      return state.cursos.find((curso) => curso.id === id);
+    },
+    cursoInfo: (state) => (id) => {
+      const curso = state.cursos.find((curso) => curso.id === id);
+      const info = {
+        nombre: curso.nombre,
+        costo: curso.costo,
+        duracion: curso.duracion,
+        cupos: curso.cupos,
+        inscritos: curso.inscritos,
+        completado: curso.completado,
+        fecha_registro: curso.fecha_registro,
+        descripcion: curso.descripcion,
+      };
+      return info;
     }
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    ADD(state, curso) {
+      state.cursos.push(curso);
+    },
+    EDIT(state, curso) {
+      const index = state.cursos.findIndex((c) => c.id === curso.id);
+      state.cursos[index] = curso;
+    },
+    DELETE(state, id) {
+      const index = state.cursos.findIndex((c) => c.id === id);
+      state.cursos.splice(index, 1);
+    }
+  },
+  actions: {
+  },
   modules: {},
 });
