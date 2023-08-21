@@ -128,16 +128,21 @@ export default {
       this.$router.push("/admin");
     },
     onSubmit() {
+      if(this.completado == "true"){
+        this.completado = true
+      }else{
+        this.completado = false
+      }
       this.$store.commit("EDIT", {
         id: this.course.id,
         nombre: this.nombre,
         img: this.url_imagen,
-        cupos: this.cupos,
-        inscritos: this.completado ? 0 : this.inscritos,
+        cupos: parseInt(this.cupos),
+        inscritos: this.completado ? 0 : parseInt(this.inscritos),
         duracion: this.duracion,
         fecha_registro: this.transformSebmitDate(this.fecha_registro),
         completado: this.completado,
-        costo: this.costo,
+        costo: parseInt(this.costo),
         descripcion: this.descripcion,
       });
       alert("Curso editado con exito")

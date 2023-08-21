@@ -134,16 +134,18 @@ export default {
       return this.$store.getters.countCupos;
     },
     inscritos() {
-      return this.$store.getters.countInscritos;
+      return this.$store.state.cursos.reduce((acumulador, curso) => {
+        return acumulador + curso.inscritos;
+      }, 0);
     },
     restantes(){
         return this.cupos - this.inscritos
     },
     terminados(){
-        return this.$store.getters.countTerminados
+        return this.$store.state.cursos.filter((curso) => curso.completado).length
     },
     activos(){
-        return this.$store.getters.countNoTerminados
+        return this.$store.state.cursos.filter((curso) => !curso.completado).length
     },
     totalCursos(){
         return this.$store.getters.countCursos

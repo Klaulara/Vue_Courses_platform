@@ -94,12 +94,6 @@ export default new Vuex.Store({
         return acumulador + curso.inscritos;
       }, 0);
     },
-    countTerminados: (state) => {
-      return state.cursos.filter((curso) => curso.completado).length;
-    },
-    countNoTerminados: (state) => {
-      return state.cursos.filter((curso) => !curso.completado).length;
-    },
     countCursos: (state) => {
       return state.cursos.length;
     },
@@ -109,20 +103,6 @@ export default new Vuex.Store({
     getCursobyId: (state) => (id) => {
       return state.cursos.find((curso) => curso.id === id);
     },
-    cursoInfo: (state) => (id) => {
-      const curso = state.cursos.find((curso) => curso.id === id);
-      const info = {
-        nombre: curso.nombre,
-        costo: curso.costo,
-        duracion: curso.duracion,
-        cupos: curso.cupos,
-        inscritos: curso.inscritos,
-        completado: curso.completado,
-        fecha_registro: curso.fecha_registro,
-        descripcion: curso.descripcion,
-      };
-      return info;
-    }
   },
   mutations: {
     ADD(state, curso) {

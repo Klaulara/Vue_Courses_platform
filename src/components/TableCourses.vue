@@ -26,7 +26,7 @@
           </td>
           <td>
             <p
-              v-if="course.completado === false"
+              v-if="course.completado === false || course.completado === 'false'"
               class="bg-secondary rounded-4 p-1 text-center w-50"
             >
               No
