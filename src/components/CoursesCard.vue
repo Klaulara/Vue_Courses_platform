@@ -27,7 +27,7 @@ export default {
       required: true,
     },
     costo: {
-      type: String,
+      type: Number,
       required: true,
     },
     duracion: {
@@ -35,11 +35,11 @@ export default {
       required: true,
     },
     cupos: {
-      type: String,
+      type: Number,
       required: true,
     },
     completado: {
-      type: String,
+      type: Boolean,
       required: true,
     },
     fecha_registro: {

@@ -89,6 +89,7 @@ export default {
   },
   methods: {
     deleteCourse(id) {
+      if(!confirm("¿Está seguro de eliminar el curso?")) return
       this.$store.commit("DELETE", id);
     },
     editCourse(id) {
